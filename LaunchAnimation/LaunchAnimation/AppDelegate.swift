@@ -20,12 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         self.window!.backgroundColor = UIColor(red: 0.047, green:0.996,blue:0.447, alpha:1)
         self.window!.rootViewController = navigationVC
-        //logo mask
-        navigationVC!.view.layer.mask = CALayer()
-        navigationVC!.view.layer.mask!.contents = UIImage(named: "logo")!.CGImage
-        navigationVC!.view.layer.mask!.position = navigationVC!.view.center
-        navigationVC!.view.layer.mask!.bounds = CGRect(x: 0, y: 0, width: launchIconWidth, height: launchIconWidth)
         
+        //logo mask
+        let layer = CALayer.init()
+        layer.contents = UIImage(named: "logo")!.CGImage
+        layer.position = navigationVC!.view.center
+        layer.bounds = CGRect(x: 0, y: 0, width: launchIconWidth, height: launchIconWidth)
+        navigationVC!.view.layer.mask = layer
+
         //mask background view
         let maskBackgroundView = UIView.init(frame: navigationVC!.view.bounds)
         maskBackgroundView.backgroundColor = UIColor.whiteColor()
